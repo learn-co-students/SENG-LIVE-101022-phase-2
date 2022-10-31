@@ -1,4 +1,4 @@
-// - Accept the props provided to the component
+// - Accept the props (projects) provided to the component
 
 // - Destructure `projects` from the props object
 
@@ -8,9 +8,24 @@
 
 //   - Provide each `project` object as a prop named `project`
 
-const ProjectList = () => {
+import ProjectListItem from "./ProjectListItem";
+
+const ProjectList = ({ projects }) => {
+    // console.log(projects);
+        // projects => Array of Project Objects
+
+    // If Value for Key Was An Array...
+        // Build Out Helper Function to Hone in One Value
+
+    const ProjectListItems = projects.map((project) => {
+        return <ProjectListItem key={project.id} project={project} />
+    });
+
+    console.log(ProjectListItems);
+    
     return (
-        <h1>ProjectList Component</h1>
+        // ProjectList => Container for ProjectListItem Components
+        <ul>{ProjectListItems}</ul>
     );
 }
 

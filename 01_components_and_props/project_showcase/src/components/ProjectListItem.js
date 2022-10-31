@@ -15,3 +15,26 @@
 //   - Dynamically render each project name inside the `h4` tag
 
 //   - Dynamically render each project's about data inside the `p` tag
+
+const ProjectListItem = ({ project }) => {
+    
+    // Destructure Project Objects
+    const { name, id, image, link, about, phase } = project;
+    
+    return (
+        <>
+            <li>
+                <figure>
+                    {/* <img src={image} alt={name}/> */}
+                </figure>
+                <article>
+                    <h4>{name}</h4>
+                    <p>{about}</p>
+                </article>
+            </li>
+            <br />
+        </>
+    );
+}
+
+export default ProjectListItem;
