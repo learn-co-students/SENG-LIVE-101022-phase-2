@@ -7,3 +7,11 @@
 //   - Provide a key prop set to the `project id` value
 
 //   - Provide each `project` object as a prop named `project`
+
+const ProjectList = () => {
+    return (
+        <h1>ProjectList Component</h1>
+    );
+}
+
+export default ProjectList;
