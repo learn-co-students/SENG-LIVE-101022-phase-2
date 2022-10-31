@@ -20,6 +20,11 @@ const ProjectListItem = ({ project }) => {
     
     // Destructure Project Objects
     const { name, id, image, link, about, phase } = project;
+
+    // Same Thing As...
+    // const name = project.name;
+    // const id = project.id;
+    // ...
     
     return (
         <>
