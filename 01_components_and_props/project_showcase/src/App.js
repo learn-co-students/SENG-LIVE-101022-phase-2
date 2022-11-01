@@ -24,6 +24,7 @@ const App = () => {
       <Header firstName="Louis" lastName="Medina"/>
       <ProjectForm />
       <ProjectList projects={projects}/>
+      {/* <SomeOtherComponent projects={projects}/> */}
     </>
   );
 }
