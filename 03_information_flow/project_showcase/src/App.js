@@ -22,6 +22,9 @@ const App = () => {
     return project.name.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
+  // Callback Function for onChange Event in Live Search Bar
+  const handleOnChange = (e) => setSearchQuery(e.target.value);
+
   const handleClick = () => {
     fetch("http://localhost:4000/projects")
       .then((res) => res.json())
@@ -34,7 +37,7 @@ const App = () => {
       <Header isDarkMode={isDarkMode} onToggleDarkMode={onToggleDarkMode}/>
       <ProjectForm />
       <button onClick={handleClick}>Load Projects</button>
-      <ProjectList setSearchQuery={setSearchQuery} searchResults={searchResults} />
+      <ProjectList handleOnChange={handleOnChange} searchResults={searchResults} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import ProjectListItem from "./ProjectListItem";
 
-const ProjectList = ({ setSearchQuery, searchResults }) => {
+const ProjectList = ({ handleOnChange, searchResults }) => {
   
   // Does This State Need to Be Lifted?
   // const [searchQuery, setSearchQuery] = useState("");
@@ -10,11 +10,11 @@ const ProjectList = ({ setSearchQuery, searchResults }) => {
   //   return project.name.toLowerCase().includes(searchQuery.toLowerCase());
   // });
 
+  // const handleOnChange = (e) => setSearchQuery(e.target.value);
+
   const projectListItems = searchResults.map((project) => (
     <ProjectListItem key={project.id} {...project} />
   ));
-
-  const handleOnChange = (e) => setSearchQuery(e.target.value);
 
   return (
     <section>
