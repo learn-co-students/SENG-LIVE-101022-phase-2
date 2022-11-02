@@ -1,6 +1,6 @@
 import ProjectListItem from "./ProjectListItem";
 
-const ProjectList = ({ projects }) => {
+const ProjectList = ({ setSearchQuery, searchResults }) => {
   
   // Does This State Need to Be Lifted?
   // const [searchQuery, setSearchQuery] = useState("");

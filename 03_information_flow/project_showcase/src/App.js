@@ -34,7 +34,7 @@ const App = () => {
       <Header isDarkMode={isDarkMode} onToggleDarkMode={onToggleDarkMode}/>
       <ProjectForm />
       <button onClick={handleClick}>Load Projects</button>
-      <ProjectList projects={projects} />
+      <ProjectList setSearchQuery={setSearchQuery} searchResults={searchResults} />
     </div>
   );
 };
