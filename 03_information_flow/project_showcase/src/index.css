@@ -38,6 +38,7 @@ body {
   min-height: 100vh;
 }
 
+/* "App light" */
 .App.light {
   --color: var(--black);
   --background: var(--white);

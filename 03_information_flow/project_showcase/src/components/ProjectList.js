@@ -1,12 +1,14 @@
 import ProjectListItem from "./ProjectListItem";
-import { useState } from "react";
 
 const ProjectList = ({ projects }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  
+  // Does This State Need to Be Lifted?
+  // const [searchQuery, setSearchQuery] = useState("");
 
-  const searchResults = projects.filter((project) => {
-    return project.name.toLowerCase().includes(searchQuery.toLowerCase());
-  });
+  // Filter Logic to Live Search Feature 
+  // const searchResults = projects.filter((project) => {
+  //   return project.name.toLowerCase().includes(searchQuery.toLowerCase());
+  // });
 
   const projectListItems = searchResults.map((project) => (
     <ProjectListItem key={project.id} {...project} />
