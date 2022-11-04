@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ProjectForm = () => {
+const ProjectForm = ({ addProject }) => {
   
   // Two Approaches 
 
@@ -35,8 +35,8 @@ const ProjectForm = () => {
         // Recommended As Best Practice To Keep Syntax Readable
         const { name, value } = e.target;
 
-        console.log(`Name of Input: ${name}`);
-        console.log(`Value of Input: ${value}`);
+        // console.log(`Name of Input: ${name}`);
+        // console.log(`Value of Input: ${value}`);
 
         // 1. Preserve the Unchanged Key / Value Pairs in formData
         // 2. Update the Approriate Key / Value Pair
@@ -45,10 +45,36 @@ const ProjectForm = () => {
           // setFormData({...formData, name: "T"});
           // setFormData({...formData, about: "T"});
       }
+
+      // const addProject = project => {
+      //   setProjects([...projects, project]);
+      // }
+
+      // Function to Handle Form Submission
+      const handleFormSubmit = e => {
+        
+        console.log("Form Submitted!");
+
+        // 1. Prevent Default Event Behavior (Page Refresh)
+        e.preventDefault();
+
+        // 2. Invoking addProject (Destructured Prop) to Add Newest Project
+          // Inverse Data Flow => Modifying "projects" From Child Component
+        addProject(formData);
+
+        // 3. Clear Form Inputs By Modifying / Resetting State 
+        setFormData({
+          name: "",
+          about: "",
+          phase: "",
+          link: "",
+          image: ""
+        });
+      }
   
   return (
     <section>
-      <form className="form" autoComplete="off">
+      <form className="form" autoComplete="off" onSubmit={handleFormSubmit}>
         <h3>Add New Project</h3>
 
         <label htmlFor="name">Name</label>

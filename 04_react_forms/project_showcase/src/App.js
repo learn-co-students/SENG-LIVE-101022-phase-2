@@ -7,6 +7,11 @@ const App = () => {
   const [projects, setProjects] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
+  // Update Our projects State With Latest Project Object
+  const addProject = project => {
+    setProjects([...projects, project]);
+  }
+
   const handleClick = () => {
     fetch("http://localhost:4000/projects")
       .then((res) => res.json())
@@ -18,7 +23,7 @@ const App = () => {
   return (
     <div className={isDarkMode ? "App" : "App light"}>
       <Header isDarkMode={isDarkMode} onToggleDarkMode={onToggleDarkMode} />
-      <ProjectForm />
+      <ProjectForm addProject={addProject} />
       <button onClick={handleClick}>Load Projects</button>
       <ProjectList projects={projects} />
     </div>
