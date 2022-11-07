@@ -15,7 +15,7 @@ presentation:
 
 - Use the useEffect hook to fetch data
 
-- Understanding component side effects
+- Understand component side effects
 
 <!-- slide style="text-align: left;" -->
 
@@ -23,7 +23,7 @@ presentation:
 
 <br>
 
-React components are 'pure functions'. This means that given an input(such as a prop), the return is 100% predictable
+React components are 'pure functions'. This means that given an input (such as a prop), the return is 100% predictable
 
 <br>
 
