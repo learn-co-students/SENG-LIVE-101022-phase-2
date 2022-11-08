@@ -8,10 +8,11 @@ const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) 
 
   const handleClap = () => { 
     
-    // Just a reference to "clapCount", not directly modifying state
-    // This would be --> clapCount = clapCount + 1;
-
+    // Just a reference to "clapCount", not directly mutating state
     const updatedCount = clapCount + 1;
+
+    // This would be directly mutating state
+    // clapCount = clapCount + 1;
 
     const configObj = {
       method: "PATCH",
