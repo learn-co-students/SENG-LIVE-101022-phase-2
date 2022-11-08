@@ -41,10 +41,10 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
 
     fetch(`http://localhost:4000/projects/${projectId}`, configObj)
       .then((resp) => resp.json())
-      .then((project) => {
+      .then((updatedProject) => {
 
         // Pessimistic Rendering
-        onUpdateProject(project);
+        onUpdateProject(updatedProject);
 
         // Resetting ProjectEditForm Values
         setFormData(initialState);

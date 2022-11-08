@@ -25,13 +25,33 @@ const App = () => {
   };
 
   // Should Be Responsible For State Change (projects)
-  const onUpdateProject = () => {
-    // Add Code Here
+  const onUpdateProject = (updatedProject) => {
+    // Map Through Our Existing Array of projects
+      // Find The Project That We Want to Update
+
+    // Creating a New (Updated) List of Projects
+    const updatedProjects = projects.map(originalProject => {
+      if (originalProject.id === updatedProject.id) {
+        return updatedProject;
+      } else {
+        return originalProject;
+      }
+    });
+
+    // Making a State Change (projects)
+      // Causes Our Root App Component to Rerender
+    setProjects(updatedProjects);
   }
 
   // Should Be Responsible For State Change (projects)
-  const onDeleteProject = () => {
-    // Add Code Here
+  const onDeleteProject = (deletedProject) => {
+    const updatedProjects = projects.filter(project => {
+      return project.id !== deletedProject.id;
+    });
+
+    // Making a State Change (projects)
+      // Causes Our Root App Component to Rerender
+    setProjects(updatedProjects);
   }
 
   const completeEditing = () => {
@@ -66,6 +86,7 @@ const App = () => {
       <ProjectList
         projects={projects}
         enterProjectEditModeFor={enterProjectEditModeFor}
+        onDeleteProject={onDeleteProject}
       />
     </div>
   );

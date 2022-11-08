@@ -1,19 +1,52 @@
 import { useState } from "react";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 
-const ProjectListItem = ({ project, enterProjectEditModeFor }) => {
-  const { id, image, about, name, link, phase } = project;
+const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) => {
+  const { id, image, about, name, link, phase, claps } = project;
 
-  const [clapCount, setClapCount] = useState(0);
+  const [clapCount, setClapCount] = useState(claps);
 
-  const handleClap = (clapCount) => setClapCount(clapCount + 1);
+  const handleClap = () => { 
+    
+    // Just a reference to "clapCount", not directly modifying state
+    // This would be --> clapCount = clapCount + 1;
+
+    const updatedCount = clapCount + 1;
+
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify({ claps: updatedCount })
+    };
+
+    fetch(`http://localhost:4000/projects/${id}`, configObj)
+    .then((resp) => resp.json())
+    .then(() => {
+
+      // State Change
+      setClapCount(clapCount + 1);
+    });
+  };
 
   const handleEditClick = () => {
     enterProjectEditModeFor(id);
   };
 
   const handleDeleteClick = () => {
-    // Add Code Here
+    const configObj = {
+      method: "DELETE"
+    };
+
+    fetch(`http://localhost:4000/projects/${id}`, configObj)
+    .then(() => { 
+      
+      // Callback Function Passed From Our Root App Component
+        // Intended To Make a State Change (projects)
+      onDeleteProject(project);
+    });
   };
 
   return (
