@@ -14,15 +14,23 @@ const App = () => {
     fetch("http://localhost:4000/projects")
       .then((resp) => resp.json())
       .then((projects) => setProjects(projects));
-  });
+  }, []);
 
   const onToggleDarkMode = () => {
-    setIsDarkMode((isDarkMode) => !isDarkMode);
+    setIsDarkMode(!isDarkMode);
   };
 
   const onAddProject = (newProj) => {
-    setProjects((projects) => [...projects, newProj]);
+    setProjects([...projects, newProj]);
   };
+
+  const onUpdateProject = () => {
+    // Add Code Here
+  }
+
+  const onDeleteProject = () => {
+    // Add Code Here
+  }
 
   const completeEditing = () => {
     setProjectId(null);

@@ -1,4 +1,4 @@
-# PATCH & DELETE requests
+# PATCH & DELETE Requests
 
 ## SWBATs:
 

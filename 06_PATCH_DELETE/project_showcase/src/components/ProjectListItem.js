@@ -12,7 +12,9 @@ const ProjectListItem = ({ project, enterProjectEditModeFor }) => {
     enterProjectEditModeFor(id);
   };
 
-  const handleDeleteClick = () => {};
+  const handleDeleteClick = () => {
+    // Add Code Here
+  };
 
   return (
     <li className="card">
