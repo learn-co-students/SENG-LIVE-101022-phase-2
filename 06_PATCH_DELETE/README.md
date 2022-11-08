@@ -2,7 +2,7 @@
 
 ## SWBATs:
 
-- [ ] Observe how to send a PATCH & DELETE request
+- [ ] Observe how to send PATCH & DELETE requests in React
 - [ ] Review changing parent state
 
 ## Deliverables

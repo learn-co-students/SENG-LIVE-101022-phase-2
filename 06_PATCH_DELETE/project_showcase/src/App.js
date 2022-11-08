@@ -24,10 +24,12 @@ const App = () => {
     setProjects([...projects, newProj]);
   };
 
+  // Should Be Responsible For State Change (projects)
   const onUpdateProject = () => {
     // Add Code Here
   }
 
+  // Should Be Responsible For State Change (projects)
   const onDeleteProject = () => {
     // Add Code Here
   }
@@ -37,6 +39,9 @@ const App = () => {
   };
 
   const enterProjectEditModeFor = (projectId) => {
+    
+    // Making a State Change From the Level of ProjectListItem
+    // Inverse Data Flow
     setProjectId(projectId);
   };
 
@@ -46,6 +51,7 @@ const App = () => {
         <ProjectEditForm
           projectId={projectId}
           completeEditing={completeEditing}
+          onUpdateProject={onUpdateProject}
         />
       );
     } else {

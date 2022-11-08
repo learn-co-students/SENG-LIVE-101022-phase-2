@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ProjectEditForm = ({ projectId, completeEditing }) => {
+const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
   const initialState = {
     name: "",
     about: "",
@@ -17,7 +17,7 @@ const ProjectEditForm = ({ projectId, completeEditing }) => {
     fetch(`http://localhost:4000/projects/${projectId}`)
       .then((res) => res.json())
       .then((project) => setFormData(project));
-  }, []);
+  }, [projectId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +27,30 @@ const ProjectEditForm = ({ projectId, completeEditing }) => {
   function handleSubmit(e) {
     e.preventDefault();
     
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify(formData),
+    };
+
+    // Optimistic Rendering
+    // onAddProject(project);
+
+    fetch(`http://localhost:4000/projects/${projectId}`, configObj)
+      .then((resp) => resp.json())
+      .then((project) => {
+
+        // Pessimistic Rendering
+        onUpdateProject(project);
+
+        // Resetting ProjectEditForm Values
+        setFormData(initialState);
+      });
+
+
     // Add code here
     completeEditing();
   }

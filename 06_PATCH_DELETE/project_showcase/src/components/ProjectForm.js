@@ -17,6 +17,7 @@ const ProjectForm = ({ onAddProject }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const configObj = {
       method: "POST",
       headers: {
@@ -26,17 +27,25 @@ const ProjectForm = ({ onAddProject }) => {
       body: JSON.stringify({ ...formData, claps: 0 }),
     };
 
+    // Optimistic Rendering
+    // onAddProject(project);
+
     fetch("http://localhost:4000/projects", configObj)
       .then((resp) => resp.json())
       .then((project) => {
+        
+        // We Are Making An Update to "projects" State
+        // Pessimistic Rendering
         onAddProject(project);
-        setFormData({
-          name: "",
-          about: "",
-          phase: "",
-          link: "",
-          image: "",
-        });
+
+        // Resetting AddNewProject Form Values
+        setFormData(initialState);
+      })
+      .catch(() => {
+        // console.log("SOMETHING WENT WRONG!");
+        
+        // Optimistic Rendering
+        // Add Function to "Clean Up" onAddProject(project);
       });
   };
 
