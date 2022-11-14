@@ -1,48 +1,59 @@
 import React, { useState, useEffect } from "react";
 
-const ProjectEditForm = ({ onUpdateProject }) => {
-  const [formData, setFormData] = useState({
+const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
+  const initialState = {
     name: "",
     about: "",
     phase: "",
     link: "",
     image: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialState);
 
   const { name, about, phase, link, image } = formData;
 
-  // const { id } = useParams()
-
-  // const history = useHistory()
-
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/1`)
+    fetch(`http://localhost:4000/projects/${projectId}`)
       .then((res) => res.json())
       .then((project) => setFormData(project));
-  }, []);
+  }, [projectId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
+    
     const configObj = {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
       },
       body: JSON.stringify(formData),
     };
 
-    fetch(`http://localhost:4000/projects/1`, configObj)
+    // Optimistic Rendering
+    // onAddProject(project);
+
+    fetch(`http://localhost:4000/projects/${projectId}`, configObj)
       .then((resp) => resp.json())
-      .then((updatedProj) => {
-        onUpdateProject(updatedProj);
+      .then((updatedProject) => {
+
+        // Pessimistic Rendering
+        onUpdateProject(updatedProject);
+
+        // Resetting ProjectEditForm Values
+        setFormData(initialState);
       });
-  };
+
+
+    // Add code here
+    completeEditing();
+  }
 
   return (
     <form onSubmit={handleSubmit} className="form" autoComplete="off">
