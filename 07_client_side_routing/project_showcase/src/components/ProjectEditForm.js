@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
+  
+  // useParams() => { id: 1 }
+  // const { id } = useParams();
+
+  // useHistory => 
+  const history = useHistory();
+  
   const initialState = {
     name: "",
     about: "",
@@ -48,6 +56,8 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
 
         // Resetting ProjectEditForm Values
         setFormData(initialState);
+
+        history.push(`/projects/${projectId}`);
       });
 
 

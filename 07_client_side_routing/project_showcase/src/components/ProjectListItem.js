@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) => {
   
@@ -81,11 +81,9 @@ const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) 
               <FaPencilAlt />
             </button>
           </Link>
-          <Link to="">
-            <button onClick={handleDeleteClick}>
-              <FaTrash />
-            </button>
-          </Link>
+          <button onClick={handleDeleteClick}>
+            <FaTrash />
+          </button>
         </div>
       </footer>
     </li>
