@@ -61,16 +61,19 @@ const App = () => {
       <Switch>
         
         {/* / => Root URL */}
+        {/* Static URL */}
         <Route exact path="/">
           <Home />
         </Route>
 
         {/* /projects/new */}
+        {/* Static URL */}
         <Route path="/projects/new">
           <ProjectForm onAddProject={onAddProject} />
         </Route>
         
         {/* /projects/:id/edit */}
+        {/* Dynamic URL => Uses the :id Symbol */}
         <Route path="/projects/:id/edit">
           <ProjectEditForm 
             projectId={projectId}
@@ -80,6 +83,7 @@ const App = () => {
         </Route>
         
         {/* /projects/:id */}
+        {/* Dynamic URL => Uses the :id Symbol */}
         <Route path="/projects/:id">
           <ProjectDetail />
         </Route>
@@ -93,6 +97,7 @@ const App = () => {
           />
         </Route>
       </Switch>
+      {/* <Footer /> */}
     </div>
   );
 };
