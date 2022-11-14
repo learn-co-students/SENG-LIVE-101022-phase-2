@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 
 const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) => {
+  
   const { id, image, about, name, link, phase, claps } = project;
 
   const [clapCount, setClapCount] = useState(claps);
+
+  // useParams()
 
   const handleClap = () => { 
     
@@ -72,12 +76,16 @@ const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) 
       <footer className="extra">
         <span className="badge blue">Phase {phase}</span>
         <div className="manage">
-          <button onClick={handleEditClick}>
-            <FaPencilAlt />
-          </button>
-          <button onClick={handleDeleteClick}>
-            <FaTrash />
-          </button>
+          <Link to={`projects/${id}/edit`}>
+            <button onClick={handleEditClick}>
+              <FaPencilAlt />
+            </button>
+          </Link>
+          <Link to="">
+            <button onClick={handleDeleteClick}>
+              <FaTrash />
+            </button>
+          </Link>
         </div>
       </footer>
     </li>

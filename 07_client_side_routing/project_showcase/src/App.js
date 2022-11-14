@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
+
 
 import Header from "./components/Header";
 import ProjectForm from "./components/ProjectForm";
@@ -56,19 +58,41 @@ const App = () => {
   return (
     <div className={isDarkMode ? "App" : "App light"}>
       <Header isDarkMode={isDarkMode} onToggleDarkMode={onToggleDarkMode} />
-      <Home />
-      <ProjectForm onAddProject={onAddProject} />
-      <ProjectEditForm 
-        projectId={projectId}
-        completeEditing={completeEditing}
-        onUpdateProject={onUpdateProject} 
-      />
-      <ProjectDetail />
-      <ProjectList
-        projects={projects}
-        onDeleteProject={onDeleteProject}
-        enterProjectEditModeFor={enterProjectEditModeFor}
-      />
+      <Switch>
+        
+        {/* / => Root URL */}
+        <Route exact path="/">
+          <Home />
+        </Route>
+
+        {/* /projects/new */}
+        <Route path="/projects/new">
+          <ProjectForm onAddProject={onAddProject} />
+        </Route>
+        
+        {/* /projects/:id/edit */}
+        <Route path="/projects/:id/edit">
+          <ProjectEditForm 
+            projectId={projectId}
+            completeEditing={completeEditing}
+            onUpdateProject={onUpdateProject} 
+          />
+        </Route>
+        
+        {/* /projects/:id */}
+        <Route path="/projects/:id">
+          <ProjectDetail />
+        </Route>
+        
+        {/* /projects */}
+        <Route path="/projects">
+          <ProjectList
+            projects={projects}
+            onDeleteProject={onDeleteProject}
+            enterProjectEditModeFor={enterProjectEditModeFor}
+          />
+        </Route>
+      </Switch>
     </div>
   );
 };
