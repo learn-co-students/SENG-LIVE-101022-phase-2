@@ -8,6 +8,8 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
 
   // useHistory => 
   const history = useHistory();
+
+  // console.log(history);
   
   const initialState = {
     name: "",
@@ -55,8 +57,9 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
         onUpdateProject(updatedProject);
 
         // Resetting ProjectEditForm Values
-        setFormData(initialState);
+        // setFormData(initialState);
 
+        // Set Up Automated Redirect for User
         history.push(`/projects/${projectId}`);
       });
 
