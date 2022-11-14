@@ -6,7 +6,7 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
   // useParams() => { id: 1 }
   // const { id } = useParams();
 
-  // useHistory => 
+  // useHistory => Create history Object for Later Use
   const history = useHistory();
 
   // console.log(history);
@@ -59,7 +59,7 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
         // Resetting ProjectEditForm Values
         // setFormData(initialState);
 
-        // Set Up Automated Redirect for User
+        // Set Up Automated Redirect to ProjectDetail for Updated Project
         history.push(`/projects/${projectId}`);
       });
 
