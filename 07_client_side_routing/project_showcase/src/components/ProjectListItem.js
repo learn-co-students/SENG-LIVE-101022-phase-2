@@ -68,7 +68,7 @@ const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) 
         <p>{about}</p>
         {link ? (
           <p>
-            <a href={link}>Link</a>
+            <a target="_blank" href={link}>Link</a>
           </p>
         ) : null}
       </section>
