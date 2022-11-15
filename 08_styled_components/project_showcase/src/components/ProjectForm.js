@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Form, Button, Input } from "./shared";
 
 const ProjectForm = ({ onAddProject }) => {
   const [formData, setFormData] = useState({
@@ -49,11 +50,11 @@ const ProjectForm = ({ onAddProject }) => {
 
   return (
     <section>
-      <form className="form" autoComplete="off" onSubmit={handleSubmit}>
+      <Form autoComplete="off" onSubmit={handleSubmit}>
         <h3>Add New Project</h3>
 
         <label htmlFor="name">Name</label>
-        <input
+        <Input
           type="text"
           id="name"
           name="name"
@@ -62,7 +63,8 @@ const ProjectForm = ({ onAddProject }) => {
         />
 
         <label htmlFor="about">About</label>
-        <textarea
+        <Input
+          as="textarea"
           id="about"
           name="about"
           onChange={handleChange}
@@ -70,7 +72,8 @@ const ProjectForm = ({ onAddProject }) => {
         />
 
         <label htmlFor="phase">Phase</label>
-        <select
+        <Input
+          as="select"
           name="phase"
           id="phase"
           onChange={handleChange}
@@ -82,10 +85,10 @@ const ProjectForm = ({ onAddProject }) => {
           <option value="3">Phase 3</option>
           <option value="4">Phase 4</option>
           <option value="5">Phase 5</option>
-        </select>
+        </Input>
 
         <label htmlFor="link">Project Homepage</label>
-        <input
+        <Input
           type="text"
           id="link"
           name="link"
@@ -94,7 +97,7 @@ const ProjectForm = ({ onAddProject }) => {
         />
 
         <label htmlFor="image">Screenshot</label>
-        <input
+        <Input
           type="text"
           id="image"
           name="image"
@@ -102,8 +105,8 @@ const ProjectForm = ({ onAddProject }) => {
           value={formData.image}
         />
 
-        <button type="submit">Add Project</button>
-      </form>
+        <Button type="submit">Add Project</Button>
+      </Form>
     </section>
   );
 };

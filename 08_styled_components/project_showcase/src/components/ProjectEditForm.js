@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { Form, Input, Button } from "./shared";
 
 const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
   
@@ -69,11 +70,11 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form" autoComplete="off">
+    <Form onSubmit={handleSubmit} autoComplete="off">
       <h3>Edit Project</h3>
 
       <label htmlFor="name">Name</label>
-      <input
+      <Input
         type="text"
         id="name"
         name="name"
@@ -82,19 +83,31 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
       />
 
       <label htmlFor="about">About</label>
-      <textarea id="about" name="about" value={about} onChange={handleChange} />
+      <Input 
+        as="textarea"
+        id="about" 
+        name="about" 
+        value={about} 
+        onChange={handleChange} 
+      />
 
       <label htmlFor="phase">Phase</label>
-      <select name="phase" id="phase" value={phase} onChange={handleChange}>
+      <Input 
+        as="select"
+        name="phase" 
+        id="phase" 
+        value={phase} 
+        onChange={handleChange}
+      >
         <option value="1">Phase 1</option>
         <option value="2">Phase 2</option>
         <option value="3">Phase 3</option>
         <option value="4">Phase 4</option>
         <option value="5">Phase 5</option>
-      </select>
+      </Input>
 
       <label htmlFor="link">Project Homepage</label>
-      <input
+      <Input
         type="text"
         id="link"
         name="link"
@@ -103,7 +116,7 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
       />
 
       <label htmlFor="image">Screenshot</label>
-      <input
+      <Input
         type="text"
         id="image"
         name="image"
@@ -111,8 +124,8 @@ const ProjectEditForm = ({ projectId, completeEditing, onUpdateProject }) => {
         onChange={handleChange}
       />
 
-      <button type="submit">Update Project</button>
-    </form>
+      <Button type="submit">Update Project</Button>
+    </Form>
   );
 };
 

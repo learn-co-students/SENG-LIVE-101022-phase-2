@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Button } from "./shared";
 
 const Header = ({ isDarkMode, onToggleDarkMode }) => {
   const buttonTextContent = isDarkMode ? "Light Mode" : "Dark Mode";
@@ -17,15 +18,15 @@ const Header = ({ isDarkMode, onToggleDarkMode }) => {
         <div className="navigation">
           
           {/* NavLinks => Add "Active" Highlighting to Links*/}
-          <NavLink className="button" exact to="/projects">
+          <Button as={NavLink} exact to="/projects">
             All Projects
-          </NavLink>
+          </Button>
           
           {/* NavLinks => Add "Active" Highlighting to Links*/}
-          <NavLink className="button" exact to="/projects/new">
+          <Button as={NavLink} exact to="/projects/new">
             Add Project
-          </NavLink>
-          <button onClick={onToggleDarkMode}>{buttonTextContent}</button>
+          </Button>
+          <Button onClick={onToggleDarkMode}>{buttonTextContent}</Button>
         </div>
       </nav>
     </header>

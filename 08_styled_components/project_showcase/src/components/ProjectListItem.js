@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Button } from "./shared";
 
 const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) => {
   
@@ -52,9 +53,9 @@ const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) 
     <li className="card">
       <figure className="image">
         <img src={image} alt={name} />
-        <button onClick={handleClap} className="claps">
+        <Button onClick={handleClap} className="claps">
           👏{clapCount}
-        </button>
+        </Button>
       </figure>
 
       <section className="details">
@@ -62,7 +63,7 @@ const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) 
         <p>{about}</p>
         {link ? (
           <p>
-            <a target="_blank" href={link}>Link</a>
+            <a target="_blank" rel="noreferrer" href={link}>Link</a>
           </p>
         ) : null}
       </section>
@@ -70,14 +71,14 @@ const ProjectListItem = ({ project, enterProjectEditModeFor, onDeleteProject }) 
       <footer className="extra">
         <span className="badge blue">Phase {phase}</span>
         <div className="manage">
-          <Link to={`projects/${id}/edit`}>
-            <button onClick={handleEditClick}>
+          <Button onClick={handleEditClick}>
+            <Link to={`projects/${id}/edit`}>
               <FaPencilAlt />
-            </button>
-          </Link>
-          <button onClick={handleDeleteClick}>
+            </Link>
+          </Button>
+          <Button onClick={handleDeleteClick}>
             <FaTrash />
-          </button>
+          </Button>
         </div>
       </footer>
     </li>

@@ -1,5 +1,6 @@
 import ProjectListItem from "./ProjectListItem";
 import { useState } from "react";
+import { Button, Input } from "./shared";
 
 const ProjectList = ({
   projects,
@@ -30,14 +31,14 @@ const ProjectList = ({
       <h2>Projects</h2>
 
       <div className="filter">
-        <button>All</button>
-        <button>Phase 5</button>
-        <button>Phase 4</button>
-        <button>Phase 3</button>
-        <button>Phase 2</button>
-        <button>Phase 1</button>
+        <Button>All</Button>
+        <Button>Phase 5</Button>
+        <Button>Phase 4</Button>
+        <Button>Phase 3</Button>
+        <Button>Phase 2</Button>
+        <Button>Phase 1</Button>
       </div>
-      <input type="text" placeholder="Search..." onChange={handleOnChange} />
+      <Input type="text" placeholder="Search..." onChange={handleOnChange} />
 
       <ul className="cards">{projectItems}</ul>
     </section>

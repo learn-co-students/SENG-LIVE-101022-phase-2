@@ -1,4 +1,6 @@
-:root {
+/* Global Styles */
+
+/* :root {
   --turquoise: #00efe1;
   --mid-turquoise: #14d5c9;
   --dark-turquoise: #00333f;
@@ -16,21 +18,21 @@
   --color: var(--white);
   --background: var(--black);
   --primary: var(--turquoise);
-}
+} */
 
 /* layout */
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
+} */
 
-body {
+/* body {
   font-family: "Fira Code", monospace;
   font-size: 16px;
   color: var(--color);
   background-color: var(--background);
-}
+} */
 
 .App {
   color: var(--color);
@@ -44,15 +46,15 @@ body {
   --primary: var(--dark-turquoise);
 }
 
-section {
+/* section {
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 /* buttons */
-button, .button {
+/* button, .button {
   appearance: auto;
   padding: 0.5rem 0.75rem;
   border: none;
@@ -100,7 +102,7 @@ button.blue:hover,
   color: var(--white);
   background-color: var(--blue);
   border: 2px solid var(--blue);
-}
+} */
 
 /* links */
 a {
@@ -130,20 +132,20 @@ header {
 }
 
 /* forms */
-.form {
+/* .form {
   display: flex;
   flex-direction: column;
   width: 500px;
   margin: 0 auto;
   border: 2px solid var(--dark-turquoise);
   padding: 1.75rem;
-}
+} */
 
 .form h3 {
   margin-bottom: 1rem;
 }
 
-input,
+/* input,
 textarea,
 select {
   margin-top: 0.25rem;
@@ -154,7 +156,7 @@ select {
   font-weight: bold;
   transition: all 0.3s;
   border: 2px solid var(--color);
-}
+} */
 
 input:focus,
 textarea:focus,

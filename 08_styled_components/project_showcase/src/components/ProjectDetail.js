@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Button } from "./shared";
 
 const ProjectDetail = () => {
   // Setting Static Project ID
@@ -33,9 +34,9 @@ const ProjectDetail = () => {
       <div className="project-detail box">
         <div className="project-image">
           <img src={image} alt={name} />
-          <button className="claps" onClick={handleClapClick}>
+          <Button className="claps" onClick={handleClapClick}>
             👏{claps}
-          </button>
+          </Button>
         </div>
         <div className="details">
           <h2>{name}</h2>
