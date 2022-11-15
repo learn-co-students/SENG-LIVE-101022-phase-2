@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const initialState = {
-  name: "",
-  about: "",
-  phase: "",
-  link: "",
-  image: "",
-};
-
 const ProjectForm = ({ onAddProject }) => {
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState({
+    name: "",
+    about: "",
+    phase: "",
+    link: "",
+    image: "",
+  });
+
+  // useHistory => Create history Object for Later Use
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -23,7 +23,8 @@ const ProjectForm = ({ onAddProject }) => {
     const configObj = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({ ...formData, claps: 0 }),
     };
@@ -32,7 +33,17 @@ const ProjectForm = ({ onAddProject }) => {
       .then((resp) => resp.json())
       .then((project) => {
         onAddProject(project);
-        history.push("/projects")
+        
+        // setFormData({
+        //   name: "",
+        //   about: "",
+        //   phase: "",
+        //   link: "",
+        //   image: "",
+        // });
+
+        // Set Up Automated Redirect to ProjectDetail for New Project
+        history.push(`/projects/${project.id}`);
       });
   };
 

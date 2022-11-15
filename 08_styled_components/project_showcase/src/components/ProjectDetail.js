@@ -2,20 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const ProjectDetail = () => {
-  const [claps, setClaps] = useState(0);
-  const [project, setProject] = useState(null);
+  // Setting Static Project ID
+  // const id = 1;
 
   const { id } = useParams();
+  
+  const [claps, setClaps] = useState(0);
+  const [project, setProject] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:4000/projects/${id}`)
       .then((r) => r.json())
       .then((project) => {
         setProject(project);
+        setIsLoaded(true);
       });
   }, [id]);
 
-  if(!project) { return <div></div>}
+  if (!isLoaded) return <h2>Loading...</h2>;
 
   const { image, name, about, link, phase } = project;
 
